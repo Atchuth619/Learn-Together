@@ -188,6 +188,37 @@ Feel free to fork and enhance the project. Suggestions and improvements are welc
 
 ---
 
+## 📦 Database Configuration
+
+This project uses MongoDB Atlas for storing application data.
+
+### 🔹 Database Details
+
+- **Cluster Name:** `Cluster0`
+- **Database Name:** `learn-together`
+- **Collection Name:** `entries`
+
+### ⚙️ Setup
+
+1. Create a `.env` file inside the `Server/` folder.
+2. Add your MongoDB Atlas connection string to the `MONGO_URI` variable. Example:
+
+```
+MONGO_URI=mongodb+srv://<username>:<password>@Cluster0.mongodb.net/learn-together?retryWrites=true&w=majority
+```
+
+3. Start the server:
+
+```bash
+cd Server
+npm install
+npm run dev
+```
+
+The backend will read `MONGO_URI` from environment variables using `dotenv`.
+
+---
+
 ## 📌 License
 
 This project is open-source and available under the MIT License.

@@ -30,6 +30,6 @@ const dailyEntrySchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-const DailyEntry = mongoose.model("DailyEntry", dailyEntrySchema);
+const DailyEntry = mongoose.model("DailyEntry", dailyEntrySchema, "entries");
 
 export default DailyEntry;
