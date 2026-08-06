@@ -110,7 +110,7 @@ http://localhost:5173
 Deployed frontend URL:
 
 ```
-https://learn-together-631vlp81c-evil-team.vercel.app/
+https://learn-together-delta.vercel.app/
 ```
 
 ### Vercel deployment steps
