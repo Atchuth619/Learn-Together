@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import { createEntry } from "../api/entryApi";
 import Navbar from "../components/Navbar";
+import { showError, showSuccess } from "../utils/swal";
 
 const getTodayDate = () => new Date().toISOString().split("T")[0];
 
@@ -26,21 +26,11 @@ const AddEntry = () => {
     e.preventDefault();
     try {
       await createEntry(form);
-      await Swal.fire({
-        icon: "success",
-        title: "Entry created",
-        text: "Entry created successfully!",
-        confirmButtonColor: "#3b82f6",
-      });
+      await showSuccess("Entry created", "Entry created successfully!");
       navigate("/");
     } catch (err) {
       console.error(err);
-      Swal.fire({
-        icon: "error",
-        title: "Failed",
-        text: "Could not create entry. Please try again.",
-        confirmButtonColor: "#ef4444",
-      });
+      showError("Failed", "Could not create entry. Please try again.");
     }
   };
 

@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import Swal from "sweetalert2";
 import { getEntries, updateEntry } from "../api/entryApi";
 import Navbar from "../components/Navbar";
+import { showError, showSuccess } from "../utils/swal";
 
 const EditEntry = () => {
   const { id } = useParams();
@@ -41,21 +41,11 @@ const EditEntry = () => {
     e.preventDefault();
     try {
       await updateEntry(id, form);
-      await Swal.fire({
-        icon: "success",
-        title: "Entry updated",
-        text: "Entry updated successfully!",
-        confirmButtonColor: "#3b82f6",
-      });
+      await showSuccess("Entry updated", "Entry updated successfully!");
       navigate("/");
     } catch (err) {
       console.error(err);
-      Swal.fire({
-        icon: "error",
-        title: "Failed",
-        text: "Could not update entry. Please try again.",
-        confirmButtonColor: "#ef4444",
-      });
+      showError("Failed", "Could not update entry. Please try again.");
     }
   };
 

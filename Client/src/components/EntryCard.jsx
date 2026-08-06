@@ -1,43 +1,25 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import { deleteEntry } from "../api/entryApi";
 import { formatDate } from "../utils/formatDate";
+import { showConfirmDelete, showError, showSuccess } from "../utils/swal";
 
 const EntryCard = ({ entry, onDelete }) => {
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
 
   const handleDelete = async () => {
-    const result = await Swal.fire({
-      title: "Delete this entry?",
-      text: "This action cannot be undone.",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#ef4444",
-      cancelButtonColor: "#6b7280",
-      confirmButtonText: "Yes, delete it",
-    });
+    const result = await showConfirmDelete();
 
     if (!result.isConfirmed) return;
 
     try {
       await deleteEntry(entry._id);
       onDelete?.(entry._id);
-      await Swal.fire({
-        icon: "success",
-        title: "Deleted",
-        text: "Entry deleted successfully!",
-        confirmButtonColor: "#3b82f6",
-      });
+      await showSuccess("Deleted", "Entry deleted successfully!");
     } catch (err) {
       console.error(err);
-      Swal.fire({
-        icon: "error",
-        title: "Failed",
-        text: "Could not delete entry. Please try again.",
-        confirmButtonColor: "#ef4444",
-      });
+      showError("Failed", "Could not delete entry. Please try again.");
     }
   };
 
