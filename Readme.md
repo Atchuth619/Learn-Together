@@ -147,6 +147,17 @@ GET /entries
 
 ---
 
+## 🧪 Swagger API Documentation
+
+The backend also includes interactive Swagger documentation so you can explore and test the API endpoints visually.
+
+- Description: View and test the REST API for creating and retrieving daily entries.
+- Swagger URL: http://localhost:5000/api-docs
+
+Open the URL in your browser to access the documentation UI.
+
+---
+
 ## 📱 UI Screens
 
 * Home (Feed)
