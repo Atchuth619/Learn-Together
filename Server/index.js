@@ -5,7 +5,6 @@ import cors from "cors";
 import dailyEntryRoutes from "./routes/dailyEntryRoutes.js";
 import swaggerSpec from "./config/swagger.js";
 import swaggerUi from "swagger-ui-express";
-import cors from "cors";
 
 dotenv.config();
 connectDB();
@@ -15,7 +14,6 @@ app.use(cors({
 }));
 
 const app = express();
-app.use(cors());
 app.use(express.json());
 
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec)); // Swagger UI route
