@@ -6,4 +6,5 @@ const API = axios.create({
 
 export const getEntries = () => API.get("/");
 export const createEntry = (data) => API.post("/", data);
+export const updateEntry = (id, data) => API.put(`/${id}`, data);
 export const deleteEntry = (id) => API.delete(`/${id}`);
