@@ -22,7 +22,14 @@ const EditEntry = () => {
         const res = await getEntries();
         const entry = res.data.find((item) => item._id === id);
         if (entry) {
-          setForm(entry);
+          const normalizedDate = entry.date
+            ? new Date(entry.date).toISOString().split("T")[0]
+            : "";
+
+          setForm({
+            ...entry,
+            date: normalizedDate,
+          });
         }
       } catch (err) {
         console.error(err);
