@@ -25,7 +25,9 @@ const AddEntry = () => {
     e.preventDefault();
     try {
       await createEntry(form);
-      navigate("/");
+      navigate("/", {
+        state: { successMessage: "Entry created successfully!" },
+      });
     } catch (err) {
       console.error(err);
     }
@@ -63,7 +65,7 @@ const AddEntry = () => {
           >
             <option value="">Select person</option>
             <option value="Atchuth">Atchuth</option>
-            <option value="Beeshma">Beeshma</option>
+            <option value="Bheeshma">Bheeshma</option>
           </select>
         </div>
 
