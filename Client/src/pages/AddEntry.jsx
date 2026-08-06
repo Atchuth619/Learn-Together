@@ -89,9 +89,18 @@ const AddEntry = () => {
           }
         />
 
-        <button className="bg-blue-500 text-white w-full p-2 rounded">
-          Submit
-        </button>
+        <div className="flex gap-2">
+          <button
+            type="button"
+            onClick={() => navigate("/")}
+            className="bg-gray-500 text-white flex-1 p-2 rounded"
+          >
+            Back
+          </button>
+          <button className="bg-blue-500 text-white flex-1 p-2 rounded">
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );
