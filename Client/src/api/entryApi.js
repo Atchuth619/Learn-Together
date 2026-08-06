@@ -1,7 +1,8 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "http://localhost:5000/api/entries",
+  // baseURL: "http://localhost:5000/api/entries",
+  baseURL: "https://learn-together-5wns.onrender.com/api/entries",
 });
 
 export const getEntries = () => API.get("/");
