@@ -39,7 +39,7 @@ This creates a **daily knowledge journal** and helps maintain a consistent learn
 
 ### Deployment (Free)
 
-* Frontend: Vercel / Netlify
+* Frontend: Vercel
 * Backend: Render / Railway
 * Database: MongoDB Atlas
 
@@ -101,11 +101,27 @@ npm install
 npm run dev
 ```
 
-App will run on:
+Local app will run on:
 
 ```
 http://localhost:5173
 ```
+
+Deployed frontend URL:
+
+```
+https://learn-together-631vlp81c-evil-team.vercel.app/
+```
+
+### Vercel deployment steps
+
+1. Push the frontend code to GitHub.
+2. Open Vercel and import the repository.
+3. Set the project root to the Client folder.
+4. Use the following build settings:
+   - **Build Command:** `npm run build`
+   - **Output Directory:** `dist`
+5. Deploy the project.
 
 ---
 
