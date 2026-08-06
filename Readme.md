@@ -158,7 +158,37 @@ Open the URL in your browser to access the documentation UI.
 
 ---
 
-## 📱 UI Screens
+## � Render Deployment (Backend)
+
+The backend is deployed on Render and is available at:
+
+```
+https://learn-together-5wns.onrender.com/
+```
+
+### Render setup steps
+
+1. Connect your GitHub repository to Render.
+2. Create a new Web Service for the backend folder.
+3. Set the following values in Render:
+   - **Build Command:** `npm install`
+   - **Start Command:** `node index.js`
+4. Add the required environment variables in Render, including:
+   - `MONGO_URI`
+5. Deploy the service.
+
+### Notes
+
+- Render will use the backend root folder and run the app from the server entry file.
+- After deployment, your backend API will be available at:
+
+```
+https://learn-together-5wns.onrender.com/api/entries
+```
+
+---
+
+## �📱 UI Screens
 
 * Home (Feed)
 * Add Entry Form
