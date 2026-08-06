@@ -5,9 +5,14 @@ import cors from "cors";
 import dailyEntryRoutes from "./routes/dailyEntryRoutes.js";
 import swaggerSpec from "./config/swagger.js";
 import swaggerUi from "swagger-ui-express";
+import cors from "cors";
 
 dotenv.config();
 connectDB();
+
+app.use(cors({
+  origin: "*"
+}));
 
 const app = express();
 app.use(cors());
@@ -21,4 +26,4 @@ app.get("/", (req, res) => {
   res.send("API Running...");
 });
 
-app.listen(5000, () => console.log("Server started"));
+app.listen(process.env.PORT ||5000, () => console.log("Server started"));
