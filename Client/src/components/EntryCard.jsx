@@ -7,6 +7,10 @@ const EntryCard = ({ entry }) => {
         {formatDate(entry.date)}
       </p>
 
+      {entry.username && (
+        <p className="text-sm text-blue-600 mt-1">Added by: {entry.username}</p>
+      )}
+
       <h2 className="font-bold text-lg mt-2">
         👤 {entry.famousPerson?.name}
       </h2>
