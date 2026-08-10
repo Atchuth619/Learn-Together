@@ -60,6 +60,13 @@ const Home = () => {
     }
   };
 
+  const filteredEntries = entries.filter((entry) => {
+    const date = new Date(entry.date);
+    const matchesYear = selectedYear ? date.getFullYear() === Number(selectedYear) : true;
+    const matchesMonth = selectedMonth ? date.getMonth() + 1 === Number(selectedMonth) : true;
+    return matchesYear && matchesMonth;
+  });
+
   const clearFilters = () => {
     setSelectedYear("");
     setSelectedMonth("");
@@ -145,7 +152,7 @@ const Home = () => {
           <div className="mt-4 text-sm text-slate-600">
             {selectedYear || selectedMonth ? (
               <span>
-                Showing {entries.length} filtered {entries.length === 1 ? "entry" : "entries"}.
+                Showing {filteredEntries.length} filtered {filteredEntries.length === 1 ? "entry" : "entries"}.
               </span>
             ) : (
               <span>Showing all entries.</span>
@@ -155,10 +162,10 @@ const Home = () => {
 
         {loading ? (
           <Loader />
-        ) : entries.length === 0 ? (
+        ) : filteredEntries.length === 0 ? (
           <p className="text-center text-gray-500">No entries found.</p>
         ) : (
-          entries.map((entry) => (
+          filteredEntries.map((entry) => (
             <EntryCard key={entry._id} entry={entry} onDelete={handleDeleteEntry} />
           ))
         )}

@@ -19,14 +19,19 @@ export const getEntries = async (req, res) => {
     const parsedYear = year ? parseInt(year, 10) : null;
     const parsedMonth = month ? parseInt(month, 10) : null;
 
-    if (!Number.isNaN(parsedYear) && parsedYear !== null) {
-      const startMonth = parsedMonth && parsedMonth >= 1 && parsedMonth <= 12 ? parsedMonth - 1 : 0;
-      const start = new Date(parsedYear, startMonth, 1);
-      const end = parsedMonth && parsedMonth >= 1 && parsedMonth <= 12
-        ? new Date(parsedYear, startMonth + 1, 1)
-        : new Date(parsedYear + 1, 0, 1);
+    const hasYear = parsedYear !== null && !Number.isNaN(parsedYear);
+    const hasMonth = parsedMonth !== null && !Number.isNaN(parsedMonth) && parsedMonth >= 1 && parsedMonth <= 12;
 
+    if (hasYear && hasMonth) {
+      const start = new Date(parsedYear, parsedMonth - 1, 1);
+      const end = new Date(parsedYear, parsedMonth, 1);
       query.date = { $gte: start, $lt: end };
+    } else if (hasYear) {
+      const start = new Date(parsedYear, 0, 1);
+      const end = new Date(parsedYear + 1, 0, 1);
+      query.date = { $gte: start, $lt: end };
+    } else if (hasMonth) {
+      query.$expr = { $eq: [{ $month: "$date" }, parsedMonth] };
     }
 
     const entries = await DailyEntry.find(query).sort({ date: -1 });
