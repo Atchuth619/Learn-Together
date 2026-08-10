@@ -10,10 +10,26 @@ export const createEntry = async (req, res) => {
   }
 };
 
-// ✅ Get All Entries
+// ✅ Get Entries (optional year/month filtering)
 export const getEntries = async (req, res) => {
   try {
-    const entries = await DailyEntry.find().sort({ date: -1 });
+    const { year, month } = req.query;
+    const query = {};
+
+    const parsedYear = year ? parseInt(year, 10) : null;
+    const parsedMonth = month ? parseInt(month, 10) : null;
+
+    if (!Number.isNaN(parsedYear) && parsedYear !== null) {
+      const startMonth = parsedMonth && parsedMonth >= 1 && parsedMonth <= 12 ? parsedMonth - 1 : 0;
+      const start = new Date(parsedYear, startMonth, 1);
+      const end = parsedMonth && parsedMonth >= 1 && parsedMonth <= 12
+        ? new Date(parsedYear, startMonth + 1, 1)
+        : new Date(parsedYear + 1, 0, 1);
+
+      query.date = { $gte: start, $lt: end };
+    }
+
+    const entries = await DailyEntry.find(query).sort({ date: -1 });
     res.json(entries);
   } catch (error) {
     res.status(500).json({ message: error.message });
