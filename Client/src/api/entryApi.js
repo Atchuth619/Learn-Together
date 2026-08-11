@@ -1,8 +1,20 @@
 import axios from "axios";
 
 const API = axios.create({
-  // baseURL: "http://localhost:5000/api/entries",
-  baseURL: "https://learn-together-5wns.onrender.com/api/entries",
+  baseURL: import.meta.env.VITE_API_BASE_URL
+    ? `${import.meta.env.VITE_API_BASE_URL}/entries`
+    : "http://localhost:5000/api/entries",
+});
+
+API.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+  if (token) {
+    config.headers = {
+      ...config.headers,
+      Authorization: `Bearer ${token}`,
+    };
+  }
+  return config;
 });
 
 export const getEntries = (params = {}) => API.get("/", { params });

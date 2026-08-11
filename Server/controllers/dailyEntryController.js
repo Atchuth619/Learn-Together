@@ -1,21 +1,19 @@
 import DailyEntry from "../models/DailyEntry.js";
 
-// ✅ Create Entry
 export const createEntry = async (req, res) => {
   try {
-    const entry = await DailyEntry.create(req.body);
+    const entry = await DailyEntry.create({ ...req.body, userId: req.user.id });
     res.status(201).json(entry);
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
 
-// ✅ Get Entries (optional year/month filtering)
 export const getEntries = async (req, res) => {
   try {
     const { year, month } = req.query;
-    const query = {};
-
+    // const query = { userId: req.user.id };
+    const query = { };
     const parsedYear = year ? parseInt(year, 10) : null;
     const parsedMonth = month ? parseInt(month, 10) : null;
 
@@ -44,7 +42,7 @@ export const getEntries = async (req, res) => {
 // ✅ Get Single Entry
 export const getEntryById = async (req, res) => {
   try {
-    const entry = await DailyEntry.findById(req.params.id);
+    const entry = await DailyEntry.findOne({ _id: req.params.id, userId: req.user.id });
 
     if (!entry) {
       return res.status(404).json({ message: "Entry not found" });
@@ -59,8 +57,8 @@ export const getEntryById = async (req, res) => {
 // ✅ Update Entry
 export const updateEntry = async (req, res) => {
   try {
-    const entry = await DailyEntry.findByIdAndUpdate(
-      req.params.id,
+    const entry = await DailyEntry.findOneAndUpdate(
+      { _id: req.params.id, userId: req.user.id },
       req.body,
       { new: true }
     );
@@ -78,7 +76,7 @@ export const updateEntry = async (req, res) => {
 // ✅ Delete Entry
 export const deleteEntry = async (req, res) => {
   try {
-    const entry = await DailyEntry.findByIdAndDelete(req.params.id);
+    const entry = await DailyEntry.findOneAndDelete({ _id: req.params.id, userId: req.user.id });
 
     if (!entry) {
       return res.status(404).json({ message: "Entry not found" });

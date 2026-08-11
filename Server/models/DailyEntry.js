@@ -5,11 +5,12 @@ const dailyEntrySchema = new mongoose.Schema(
     userId: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "User",
+      required: true,
     },
     username: {
       type: String,
       required: true,
-      enum: ["Atchuth", "Bheeshma"], // optional restriction
+      trim: true,
     },
     date: {
       type: Date,
