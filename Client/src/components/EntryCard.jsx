@@ -83,7 +83,7 @@ const EntryCard = ({ entry, onDelete }) => {
       <h3 className="mt-2 font-semibold">💰 Investments</h3>
       {entry.investments?.map((inv, i) => (
         <p key={i} className="text-sm">
-          • {inv.title}
+          • {inv.title?.length === 0 ? "No investment Updates" : inv.title}
         </p>
       ))}
     </div>
