@@ -16,7 +16,7 @@ const Navbar = () => {
       <div className="flex items-center gap-4">
         {user ? (
           <>
-            <span className="text-sm">{user.username}</span>
+            <span className="text-sm">{user.username ? user.username.charAt(0).toUpperCase() + user.username.slice(1) : ""}</span>
             <button
               type="button"
               onClick={handleLogout}
