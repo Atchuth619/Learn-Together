@@ -1,9 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL
-    ? `${import.meta.env.VITE_API_BASE_URL}/entries`
-    : "http://localhost:5000/api/entries",
+   baseURL: "https://learn-together-5wns.onrender.com/api/entries", //change it while running it from local
 });
 
 API.interceptors.request.use((config) => {
