@@ -6,8 +6,10 @@ import {
   updateEntry,
   deleteEntry,
 } from "../controllers/dailyEntryController.js";
+import authMiddleware from "../middleware/authMiddleware.js";
 
 const router = express.Router();
+router.use(authMiddleware);
 
 /**
  * @swagger

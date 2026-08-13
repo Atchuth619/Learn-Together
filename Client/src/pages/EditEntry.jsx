@@ -188,7 +188,7 @@ const EditEntry = () => {
           >
             Back
           </button>
-          <button className="flex-1 rounded bg-blue-500 p-2 text-white">
+          <button className="flex-1 rounded bg-primary p-2 text-on-primary">
             Update
           </button>
         </div>

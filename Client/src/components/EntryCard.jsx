@@ -24,13 +24,11 @@ const EntryCard = ({ entry, onDelete }) => {
   };
 
   return (
-    <div className="mb-4 rounded-xl bg-white p-4 shadow-md">
+    <div className="mb-4 rounded-xl bg-surface border border-surface p-4 shadow-md">
       <div className="flex items-start justify-between gap-2">
         <div className="flex-1">
-          <p className="text-xs text-gray-400">{formatDate(entry.date)}</p>
-
           {entry.username && (
-            <p className="mt-1 text-sm text-blue-600">Added by: {entry.username}</p>
+            <p className="mt-1 text-sm text-brand">Added by: {entry.username} on {formatDate(entry.date)}</p>
           )}
         </div>
 
@@ -38,20 +36,20 @@ const EntryCard = ({ entry, onDelete }) => {
           <button
             type="button"
             onClick={() => setMenuOpen((prev) => !prev)}
-            className="rounded-full border border-gray-200 px-3 py-1 text-gray-600 hover:bg-gray-100"
+            className="rounded-full border border-surface px-3 py-1 text-muted"
           >
             ⋯
           </button>
 
           {menuOpen && (
-            <div className="absolute right-0 mt-2 w-28 rounded-md border border-gray-200 bg-white shadow-lg">
+            <div className="absolute right-0 mt-2 w-28 rounded-md border border-surface bg-surface shadow-lg">
               <button
                 type="button"
                 onClick={() => {
                   setMenuOpen(false);
                   navigate(`/edit/${entry._id}`);
                 }}
-                className="block w-full px-3 py-2 text-left text-sm text-gray-700 hover:bg-gray-100"
+                className="block w-full px-3 py-2 text-left text-sm text-muted"
               >
                 Update
               </button>
@@ -61,7 +59,7 @@ const EntryCard = ({ entry, onDelete }) => {
                   setMenuOpen(false);
                   handleDelete();
                 }}
-                className="block w-full px-3 py-2 text-left text-sm text-red-600 hover:bg-gray-100"
+                className="block w-full px-3 py-2 text-left text-sm text-danger"
               >
                 Delete
               </button>
@@ -83,7 +81,7 @@ const EntryCard = ({ entry, onDelete }) => {
       <h3 className="mt-2 font-semibold">💰 Investments</h3>
       {entry.investments?.map((inv, i) => (
         <p key={i} className="text-sm">
-          • {inv.title}
+          • {inv.title?.length === 0 ? "No investment Updates" : inv.title}
         </p>
       ))}
     </div>
