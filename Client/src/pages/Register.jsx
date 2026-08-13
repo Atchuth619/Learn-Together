@@ -3,6 +3,7 @@ import { useNavigate, Link } from "react-router-dom";
 import { register } from "../api/authApi";
 import Navbar from "../components/Navbar";
 import { showError, showSuccess } from "../utils/swal";
+import registerImg from "../assets/Images/register.jpg";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -31,6 +32,7 @@ const Register = () => {
     <div>
       <Navbar />
       <div className="p-4 max-w-md mx-auto">
+        <img src={registerImg} alt="Register" className="w-full h-48 object-cover rounded mb-4" />
         <h2 className="text-xl font-semibold mb-4">Register</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
