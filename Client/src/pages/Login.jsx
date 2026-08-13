@@ -32,7 +32,7 @@ const Login = () => {
     <div>
       <Navbar />
       <div className="p-4 max-w-md mx-auto">
-        <img src={loginImg} alt="Login" className="w-full h-48 object-cover rounded mb-4" />
+        <img src={loginImg} alt="Login" className="w-full h-80 object-cover rounded mb-4" />
         <h2 className="text-xl font-semibold mb-4">Login</h2>
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>

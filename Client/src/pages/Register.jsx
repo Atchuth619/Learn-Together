@@ -32,8 +32,7 @@ const Register = () => {
     <div>
       <Navbar />
       <div className="p-4 max-w-md mx-auto">
-        <img src={registerImg} alt="Register" className="w-full h-48 object-cover rounded mb-4" />
-        <h2 className="text-xl font-semibold mb-4">Register</h2>
+        <img src={registerImg} alt="Register" className="w-full h-80 object-cover rounded mb-4" />
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
             <label className="block text-sm font-medium mb-1">Username</label>
