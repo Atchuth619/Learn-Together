@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate, Link, Navigate } from "react-router-dom";
 import { register } from "../api/authApi";
 import Navbar from "../components/Navbar";
 import { showError, showSuccess } from "../utils/swal";
@@ -27,6 +27,10 @@ const Register = () => {
       showError("Registration failed", error.response?.data?.message || "Please try again.");
     }
   };
+
+  // if already logged in, redirect to home
+  const token = localStorage.getItem("token");
+  if (token) return <Navigate to="/" replace />;
 
   return (
     <div>

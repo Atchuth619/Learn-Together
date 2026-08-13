@@ -20,7 +20,7 @@ const Navbar = () => {
             <button
               type="button"
               onClick={handleLogout}
-              className="text-sm text-white underline"
+              className="text-sm text-white"
             >
               Logout
             </button>
