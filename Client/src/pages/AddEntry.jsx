@@ -182,7 +182,7 @@ const AddEntry = () => {
           >
             Back
           </button>
-          <button className="bg-blue-500 text-white flex-1 p-2 rounded">
+          <button className="bg-primary text-on-primary flex-1 p-2 rounded">
             Submit
           </button>
         </div>

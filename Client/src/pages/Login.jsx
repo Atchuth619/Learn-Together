@@ -56,10 +56,10 @@ const Login = () => {
               required
             />
           </div>
-          <button className="w-full rounded bg-blue-500 text-white p-2">Login</button>
+          <button className="w-full rounded bg-primary text-on-primary p-2">Login</button>
         </form>
         <p className="mt-4 text-sm text-slate-600">
-          Don't have an account? <Link to="/register" className="text-blue-600">Register</Link>
+          Don't have an account? <Link to="/register" className="text-brand">Register</Link>
         </p>
       </div>
     </div>

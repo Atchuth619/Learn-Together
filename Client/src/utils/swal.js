@@ -1,11 +1,18 @@
 import Swal from "sweetalert2";
 
+const getCssVar = (name, fallback = "") => {
+  if (typeof window === "undefined") return fallback;
+  return (
+    getComputedStyle(document.documentElement).getPropertyValue(name) || fallback
+  ).trim();
+};
+
 export const showSuccess = (title, text = "") =>
   Swal.fire({
     icon: "success",
     title,
     text,
-    confirmButtonColor: "#3b82f6",
+    confirmButtonColor: getCssVar("--primary", "#0B3D91"),
   });
 
 export const showError = (title, text = "") =>
@@ -13,7 +20,7 @@ export const showError = (title, text = "") =>
     icon: "error",
     title,
     text,
-    confirmButtonColor: "#ef4444",
+    confirmButtonColor: getCssVar("--danger", "#ef4444"),
   });
 
 export const showConfirmDelete = async () =>
@@ -22,7 +29,7 @@ export const showConfirmDelete = async () =>
     text: "This action cannot be undone.",
     icon: "warning",
     showCancelButton: true,
-    confirmButtonColor: "#ef4444",
-    cancelButtonColor: "#6b7280",
+    confirmButtonColor: getCssVar("--danger", "#ef4444"),
+    cancelButtonColor: getCssVar("--muted", "#6b7280"),
     confirmButtonText: "Yes, delete it",
   });

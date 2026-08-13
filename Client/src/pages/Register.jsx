@@ -66,10 +66,10 @@ const Register = () => {
               required
             />
           </div>
-          <button className="w-full rounded bg-blue-500 text-white p-2">Register</button>
+          <button className="w-full rounded bg-primary text-on-primary p-2">Register</button>
         </form>
         <p className="mt-4 text-sm text-slate-600">
-          Already have an account? <Link to="/login" className="text-blue-600">Login</Link>
+          Already have an account? <Link to="/login" className="text-brand">Login</Link>
         </p>
       </div>
     </div>

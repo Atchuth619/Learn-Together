@@ -10,7 +10,7 @@ const AuthNavbar = ({ user }) => {
   };
 
   return (
-    <div className="bg-blue-500 text-white p-4 flex justify-between items-center">
+    <div className="bg-primary text-on-primary p-4 flex justify-between items-center">
       <h1 className="font-bold">Learn Together</h1>
       <div className="flex items-center gap-4">
         {user ? (

@@ -30,7 +30,7 @@ const EntryCard = ({ entry, onDelete }) => {
           <p className="text-xs text-gray-400">{formatDate(entry.date)}</p>
 
           {entry.username && (
-            <p className="mt-1 text-sm text-blue-600">Added by: {entry.username}</p>
+            <p className="mt-1 text-sm text-brand">Added by: {entry.username}</p>
           )}
         </div>
 
